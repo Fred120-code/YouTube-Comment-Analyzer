@@ -1,33 +1,10 @@
-// services/geminiService.js
 import { GEMINI_API_KEY } from "../config/apiConfig.js";
 import { commentsToPromptString } from "../utils/formatter.js";
 
-/**
- * analyzeComments(comments)
- * - Si GEMINI_API_KEY est présente : on propose un exemple d'appel SDK (commenté)
- *   -> tu devras adapter l'appel au SDK / version exacte que tu as.
- * - Sinon : fallbackLocalAnalysis pour permettre de tester rapidement.
- *
- * Retour : {
- *   verdict: "utile" | "pas utile",
- *   score: number,
- *   explanation: string
- * }
- */
-
 export async function analyzeComments(comments = []) {
-  // format minimal
-  const promptComments = commentsToPromptString(comments);
 
-  // -------------------------------
-  // OPTION 1: (exemple) appeler Gemini via le SDK @google/generative-ai
-  // -------------------------------
-  // NOTE IMPORTANTE :
-  // - L'API et la librairie évoluent : vérifie la doc officielle (Google AI Studio)
-  // - Le code ci-dessous est fourni comme **exemple** et peut nécessiter de l'adaptation.
-  //
-  // Si tu veux tenter l'appel réel, décommente la section et ajuste selon la doc.
-  //
+    const promptComments = commentsToPromptString(comments);
+
   if (GEMINI_API_KEY) {
     try {
       // Exemple d'utilisation du SDK (best-effort)
@@ -62,20 +39,11 @@ export async function analyzeComments(comments = []) {
     }
   }
 
-  // -------------------------------
-  // OPTION Fallback local (toujours disponible)
-  // -------------------------------
-  // Analyse simple basée sur détection de mots positifs/négatifs.
+ 
   const result = fallbackLocalAnalysis(comments);
   return result;
 }
 
-/**
- * fallbackLocalAnalysis
- * - Comptabilise mots positifs / négatifs dans les commentaires.
- * - Retourne un score simple et verdict.
- * UTILE pour tester sans clé Gemini.
- */
 function fallbackLocalAnalysis(comments = []) {
   const positiveWords = [
     "super", "bien", "utile", "clair", "claire", "excellent", "top", "parfait",

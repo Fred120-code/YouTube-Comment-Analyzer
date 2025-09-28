@@ -1,4 +1,3 @@
-// config/apiConfig.js
 // Centralise la récupération des clés depuis .env
 
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY || null;

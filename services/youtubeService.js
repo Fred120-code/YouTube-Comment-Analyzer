@@ -1,4 +1,3 @@
-// services/youtubeService.js
 import { google } from "googleapis";
 import { YOUTUBE_API_KEY } from "../config/apiConfig.js";
 

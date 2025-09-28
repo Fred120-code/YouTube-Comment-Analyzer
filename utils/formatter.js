@@ -1,5 +1,3 @@
-// utils/formatter.js
-// Fonctions utilitaires pour nettoyer / limiter les commentaires
 
 /**
  * Nettoie un tableau de commentaires :
